@@ -9,7 +9,7 @@ public class Main {
 
         // task 2
         int clientDeviceYear = 2015;
-        int osType = 1;
+        int osType = generateRandomNum();
         checkOS(osType, clientDeviceYear, currentYear);
 
         // task 3
@@ -30,12 +30,16 @@ public class Main {
     public static void checkOS(int osType, int clientDeviceYear, int currentYear) {
         if (osType == 1 && clientDeviceYear < currentYear) {
             System.out.println("Установите облегченную версию приложения для Android по ссылке");
-        } else {
-            System.out.println("Установите стандартную версию приложения для Android по ссылке");
+        } else if (osType == 2 && clientDeviceYear < currentYear){
+            System.out.println("Установите облегченную версию приложения для IOS по ссылке");
+        } else if (osType == 1 && clientDeviceYear == currentYear) {
+            System.out.println("Установите обычную версию приложения для Android по ссылке");
+        } else if (osType == 2 && clientDeviceYear == currentYear) {
+            System.out.println("Установите обычную версию приложения для IOS по ссылке");
         }
     }
 
-    public static void checkDistance(int deliveryDistance) {
+    public static int checkDistance(int deliveryDistance) {
         int deliveryDays = 1;
         if (deliveryDistance > 20) {
             deliveryDays++;
@@ -44,7 +48,16 @@ public class Main {
         if (deliveryDistance > 60) {
             deliveryDays++;
         }
-        System.out.println("Потребуется дней: " + deliveryDays);
+        return deliveryDays;
+        // так и не допер я с эти ретурном, почему в мэйне не выводятся данные
     }
+
+    // не знаю, правильно ли создал метод генерации, проверить через дебаг не смог
+    public static int generateRandomNum() {
+        java.util.Random random = new java.util.Random();
+        int osType = random.nextInt(1) + 1;
+        return osType;
+    }
+
 
 }
