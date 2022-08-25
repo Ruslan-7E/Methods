@@ -9,12 +9,15 @@ public class Main {
 
         // task 2
         int clientDeviceYear = 2015;
-        int osType = generateRandomNum();
+        int os1 = 1; // Android
+        int os2 = 2; // IOS
+        int osType = os1 + (int) (Math.random() * os2);
+        System.out.println(osType); // проверил работоспособность рандома)
         checkOS(osType, clientDeviceYear, currentYear);
 
         // task 3
         int deliveryDistance = 95;
-        checkDistance(deliveryDistance);
+        System.out.println("Потребуется дней: " + checkDistance(deliveryDistance));
     }
 
 
@@ -27,6 +30,7 @@ public class Main {
         }
     }
 
+    // много вложенностей получилось
     public static void checkOS(int osType, int clientDeviceYear, int currentYear) {
         if (osType == 1 && clientDeviceYear < currentYear) {
             System.out.println("Установите облегченную версию приложения для Android по ссылке");
@@ -44,20 +48,11 @@ public class Main {
         if (deliveryDistance > 20) {
             deliveryDays++;
         }
-
         if (deliveryDistance > 60) {
             deliveryDays++;
         }
         return deliveryDays;
-        // так и не допер я с эти ретурном, почему в мэйне не выводятся данные
+        // вроде догнал с ретурном, если что, переделаю)
     }
-
-    // не знаю, правильно ли создал метод генерации, проверить через дебаг не смог
-    public static int generateRandomNum() {
-        java.util.Random random = new java.util.Random();
-        int osType = random.nextInt(1) + 1;
-        return osType;
-    }
-
 
 }
